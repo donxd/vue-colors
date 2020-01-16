@@ -1,7 +1,8 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" ref="content">
+    <HelloWorld/>
+    <HelloWorld block/>
+    <input type="color" @change="setColor()" ref="controlColor">
   </div>
 </template>
 
@@ -12,6 +13,11 @@ export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  methods: {
+    setColor() {
+      this.$refs.content.style.setProperty('--theme-color', this.$refs.controlColor.value );
+    }
   }
 }
 </script>
